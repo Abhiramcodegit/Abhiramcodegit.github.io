@@ -2,7 +2,7 @@
 const siteMetadata = {
   title: 'Abhiram Bhogi',
   author: 'Abhiram Bhogi',
-  headerTitle: 'Abhiram Bhogi',
+  headerTitle: 'The Abhi Archive',
   description:
     'Software Engineer working across full-stack development, cloud infrastructure, and AI/ML.',
   language: 'en-us',

@@ -1,0 +1,85 @@
+---
+title: 'Beyond the Prompt: How Agentic IDEs, MCP, and an SRE Mindset Are Redefining the Engineering Learning Curve'
+date: '2026-09-05'
+tags: ['ai', 'sre', 'mcp', 'observability', 'engineering']
+draft: false
+summary: 'What building production observability pipelines in five weeks with zero Dynatrace experience taught me about working alongside AI, and the four mindset shifts every engineer needs as syntax gives way to orchestration.'
+authors: ['default']
+---
+
+Entering a Site Reliability Engineering (SRE) internship, the directive is clear: ensure massive, high traffic consumer architectures stay reliable, fast, and fully observable. During my interview, I stated my main goal was to learn our primary log monitoring tools like Splunk.
+
+I quickly realized I was selling myself short. If you learn how to effectively leverage AI in your daily workflow, you aren't just learning a single tool. You are fundamentally accelerating your mastery of any complex system.
+
+For my core intern project, I was tasked with building observability pipelines. I had zero prior experience with Dynatrace. Yet in just five weeks, armed with mentor guidance and the right AI tooling, I engineered and deployed a solution ready for production that our SRE team actively uses today.
+
+Here is what we shipped:
+
+- **Custom Telemetry:** Engineered an ingestion pipeline for OpenTelemetry streams, applying strict processing rules and routing logic to structure raw data efficiently.
+- **Advanced Observability:** Designed dynamic dashboards with live filters to monitor traffic patterns, configuring Davis AI anomaly detectors for automated root cause analysis.
+- **CI/CD Automation:** Translated UI based observability configurations into OpenPipelines deployment scripts, integrating them seamlessly into the enterprise CI/CD pipeline for scalable releases.
+
+Building this wasn't about offloading the work to an LLM. It was about changing the learning loop entirely, heavily influenced by the rigorous standards of Site Reliability Engineering.
+
+## The MCP Breakthrough
+
+The real game changer was getting access to an agentic IDE called Kiro, powered by the Model Context Protocol (MCP).
+
+If you are unfamiliar, MCP is essentially a universal plug for AI. Historically, LLMs have been isolated and trapped behind their training cutoffs. MCP is an open standard that allows AI agents to securely connect to live, external developer tools, data sources, and repositories.
+
+Because Kiro featured a Dynatrace MCP integration, the AI wasn't just blindly guessing based on outdated documentation. It had secure, contextual awareness of our actual telemetry structures. It allowed me to connect one complex system directly to another, turning the AI into a highly contextualized mentor that could navigate the tool alongside me.
+
+My daily workflow became one giant, highly efficient iterative loop:
+
+```js
+while (project != production_ready) {
+  learn_concepts_with_AI_context()
+  build_and_apply()
+  get_mentor_feedback()
+  iterate()
+}
+```
+
+Using this stack gave me an incredible technical toolkit. But the biggest takeaway was learning how to actually work alongside AI. The days of solitary coding are shifting, and surviving in this new landscape requires adopting the exact same principles that keep enterprise systems afloat. Here are my top four mindset shifts for engineers stepping into this space:
+
+## 1. Apply the SRE Mindset to AI Orchestration
+
+As an SRE, your primary job is to ensure reliability while developers constantly ship updates. You have to act as a subject matter expert who enforces strict principles. This includes testing in lower environments, managing change approval pipelines, and clearly defining business requirements to ensure whatever is shipped is stable.
+
+This exact mentality is required when orchestrating code with AI. The main danger of AI vibe coding inside an enterprise is that you are interacting with massive, interconnected codebases. If you prioritize speed over reliability, you will break things.
+
+AI is inherently fast. Your job is no longer just about generating code quickly; it is about enforcing due diligence. You must act as the SRE of your own AI agent. This means prioritizing the quality and accuracy of the output over the raw quantity of code generated. You must ensure the AI's output respects the existing enterprise architecture, passes rigorous testing, and strictly adheres to established deployment pipelines.
+
+## 2. Embrace Spec Driven Development
+
+If you just ask AI to build an application without constraints, you will inevitably end up with rogue code that works locally but fails entirely in a corporate environment. In the past, engineers and managers would then waste weeks debugging and refactoring this generated code to force it into the company's existing codebase.
+
+Spec coding solves this by enforcing extreme discipline upfront. This is a direct parallel to defining business requirements as an SRE. Before the AI writes a single line of code, you must generate and refine detailed documentation. You have to lay out the workflow meticulously, defining user stories, the scope of the project, technical requirements, and the precise design architecture.
+
+You need to tell the AI exactly where the database is, which files to reference, how the codebase is structured, and which APIs to call. By providing this targeted, heavily structured foundation, you leave no room for the AI to guess how your enterprise systems work. Spec coding ensures the final product actually aligns with your company standards from day one.
+
+## 3. Be the Orchestrator
+
+Under the hood, LLMs are incredibly advanced prediction engines. They guess what comes next based on probability, and they guess confidently. Because of this, it is entirely up to you to constrain those guesses with absolute specificity.
+
+Being an orchestrator also means understanding your tools. Different foundation models excel at different tasks. Some are optimized for deep data analysis, while others prioritize speed or general reasoning. Knowing which model to deploy for which problem is a skill built entirely through experience.
+
+This shift changes the core of software engineering. In the past, you could hold the architecture in your head and just start writing code. Today, you have to communicate like an engineering manager presenting to a team. You must clearly articulate the tech stack, the workflow, the target architecture, and the precise objective. Instead of a generic prompt like "Build a sales dashboard," an orchestrator says: "Use the Claude 3.5 Sonnet model to query the Sales repository via MCP, pull the navigation routing logic from the last month, and generate a dashboard schema sortable by deployment environment."
+
+## 4. Fully Immerse Yourself
+
+By embracing this ecosystem, I fully grasped the scope of what AI can do in every aspect of an engineering workflow. It is not just about writing functions. It is about accelerating the entire learning curve.
+
+Something as simple as using an MCP integration to explore a new tool completely changed my trajectory. I went from having zero knowledge of Dynatrace to building a pipeline ready for production, and if asked today, I can speak in depth about its architecture and utility. Not sure about a specific networking protocol? Ask AI. Need to break a five week sprint into a daily project plan? Ask AI. It isn't always flawless, but as a real time sounding board for an engineer pushing into unfamiliar technical territory, it is unmatched.
+
+## The New Engineering Baseline
+
+One of the most profound realizations from this internship is how AI is shifting the fundamental skillset required to be a software engineer.
+
+Historically, computer science highly indexed on focused coding and syntax memorization. Communication was often viewed as a secondary soft skill. Today, that is inverted. Because AI can handle the raw syntax generation, your value as an engineer is tied entirely to your ability to learn rapidly and communicate complex architectural requirements effectively. You have to be able to explain what you want with the clarity of a manager and the precision of a compiler.
+
+It is going to be fascinating to see how universities and industry technical interviews adapt in the coming years. How do you test for AI orchestration, architectural communication, and rapid learning velocity when the traditional whiteboard test no longer reflects the reality of the job?
+
+To see exactly how these models think and are trained under the hood, I highly recommend checking out this [Stanford lecture on building LLMs](https://www.youtube.com/watch?v=9vM4p9NN0Ts).
+
+If you found these insights valuable or are navigating similar shifts in your own engineering workflows, I would love to connect. Feel free to reach out via email or LinkedIn, both linked on my [About Me](/about) page.
