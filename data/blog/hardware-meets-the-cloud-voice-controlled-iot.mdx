@@ -1,0 +1,25 @@
+---
+title: 'Hardware Meets the Cloud: Architecting a Voice Controlled IoT Device'
+date: '2026-09-04'
+tags: ['ai', 'iot', 'hardware', 'engineering', 'research']
+draft: false
+summary: 'During my MSEIP Fellowship at St. Thomas University, I helped engineer a voice controlled IoT device that pipes natural speech to cloud LLMs and back — a hands-on deep dive into bridging acoustic hardware with cloud based intelligence, later published at the WRFER International Conference.'
+authors: ['default']
+---
+
+During my MSEIP Fellowship Internship at St. Thomas University in 2023, I helped lead a research initiative exploring how conversational AI could break out of the browser and interact with the physical world. This project was an incredible deep dive into exploring new technology and learning how to bridge the gap between physical hardware and software systems. We engineered a voice controlled Internet of Things device that allowed users to speak naturally and get generative AI responses played back in real time.
+
+This project eventually became a published paper, [VOICE CONTROLLED GENERATIVE ARTIFICIAL INTELLIGENCE IOT](https://www.worldresearchlibrary.org/proceeding/5973), for the WRFER International Conference. It was a really cool experience to see just how far our work was going and the innovative things we were building. The meat of the work, and what was most fun from a software engineering perspective, was getting hands on to construct the data pipeline. We had to orchestrate the entire flow from acoustic hardware to cloud based language models and back again.
+
+Here is a breakdown of the architecture and the core features we built:
+
+- **Audio Capture and Preprocessing:** We started with a standard USB microphone connected to a Raspberry Pi. Using Python, we programmed the device to record the speaker voice. The raw audio waveform was preprocessed to remove background noise before being sent through a Speech to Text API.
+- **API Integration and JSON Payloads:** Once the audio was transcribed into a text string, the real heavy lifting began. We constructed HTTP POST requests containing the transcribed text as the input prompt and routed them to either the ChatGPT API or the Google Bard API. The system parsed the incoming JSON responses to isolate the generated conversational output.
+- **Text to Speech Synthesis:** The final step in the pipeline was converting that raw JSON text data back into convincing synthetic speech. The Raspberry Pi then played the generated audio over a set of connected speakers, completing the conversational loop.
+- **The Tech Stack:** The entire system was built using Python running on a Raspberry Pi and heavily leveraged RESTful APIs to connect local hardware with cloud based Large Language Models.
+
+We had to dig deep into acoustic modeling and Mel frequency cepstral coefficients for the academic side of the research, but the core engineering takeaway was the hands on learning experience. Building this system taught me the complexities of integrating local hardware with cloud based intelligence, proving that the most exciting engineering happens when different technologies are forced to talk to each other.
+
+You can read the full academic publication detailing our methodology and system design at [VOICE CONTROLLED GENERATIVE ARTIFICIAL INTELLIGENCE IOT](https://www.worldresearchlibrary.org/proceeding/5973).
+
+If you enjoyed this deep dive or are building something at the intersection of hardware and AI, I would love to connect. Feel free to reach out via email or LinkedIn, both linked on my [About Me](/about) page.

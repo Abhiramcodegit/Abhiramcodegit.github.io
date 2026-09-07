@@ -45,3 +45,11 @@ yarn-error.log*
 
 # Contentlayer
 .contentlayer
+
+# Kiro (AI assistant) local config / steering — keep local, don't publish
+.kiro
+
+# daily-commit agent logs (local only)
+.daily-commit.log
+.daily-commit.out.log
+.daily-commit.err.log
