@@ -15,11 +15,38 @@ Live at **[abhiramcodegit.github.io](https://abhiramcodegit.github.io)**.
 
 ## Running locally
 
-This is a **Yarn (Berry) project** — always use `yarn`, never `npm`.
+**Prerequisites**
+
+- [Node.js 20](https://nodejs.org/) (matches the CI/deploy environment)
+- [Yarn](https://yarnpkg.com/) — this is a **Yarn Berry** project (`yarn@3.6.1`). Always use
+  `yarn`, never `npm`; mixing them breaks the dependency tree.
+
+**Setup**
 
 ```bash
-yarn install   # first run pulls the full dependency tree and is slow
+yarn install   # first run pulls the full dependency tree and is slow (~6 min)
 yarn dev       # start the dev server at http://localhost:3000
+```
+
+The dev server hot-reloads as you edit files in `app/`, `components/`, or `data/`.
+
+**Production build (optional)**
+
+To reproduce the static export that gets deployed:
+
+```bash
+EXPORT=1 UNOPTIMIZED=1 yarn build   # output lands in ./out
+```
+
+**Troubleshooting**
+
+If Contentlayer throws `Module not found: .contentlayer/package.json` or `No file content`
+(usually from editing content while the dev server is regenerating), stop the dev server and
+clean-rebuild:
+
+```bash
+rm -rf .contentlayer .next
+yarn dev
 ```
 
 ## Content
@@ -32,7 +59,10 @@ yarn dev       # start the dev server at http://localhost:3000
 ## Deployment
 
 Pushing to `main` triggers the GitHub Actions workflow in `.github/workflows/pages.yml`,
-which builds the site and deploys it to GitHub Pages.
+which builds the static site and deploys it to GitHub Pages. No manual build or upload needed.
+
+One-time setup: in the repo, go to **Settings → Pages → Build and deployment → Source** and
+select **GitHub Actions**.
 
 ## Credits
 
