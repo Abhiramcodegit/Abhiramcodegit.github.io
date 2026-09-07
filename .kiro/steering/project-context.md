@@ -105,6 +105,23 @@ Short version is now the HOME page; full story is the ABOUT page:
 - `siteMetadata.js` `siteLogo`/`socialBanner` still reference `/static/images/logo.png` and
   `twitter-card.png` (template placeholders) — revisit later if you want real OG/SEO images.
 
+## GitHub contributions / fork issue (RESOLVED)
+
+- **Symptom:** commits pushed from Kiro (local git) were NOT appearing on Abhiram's GitHub
+  contribution graph, even though the date was current and the email was correct.
+- **Root cause:** the repo `Abhiramcodegit/Abhiramcodegit.github.io` was a **fork** of
+  `timlrx/tailwind-nextjs-starter-blog` (confirmed via GitHub API `"fork": true` + `parent`).
+  GitHub does NOT count commits made in a fork toward the profile graph — activity is
+  attributed to the upstream network instead.
+- **Fix applied:** detached the fork via repo Settings → Danger Zone → **"Leave fork
+  network"**. Re-checked the API afterward: now `"fork": false`, no `parent`/`source`. It's a
+  standalone repo, so commits on `main` with the verified email count going forward (GitHub
+  usually backfills recent commits shortly after detaching).
+- **Also fixed this session:** git identity was unset, so commits were authored as
+  `abhiram@MacBook-Air-...`. Set globally: `git config --global user.name "Abhiram Bhogi"`
+  and `user.email abhiram.bhogi@gmail.com`. Amended + force-pushed the prior commit to
+  re-author it. Future commits are correct automatically.
+
 ## SESSION-END GIT SNAPSHOT (as of this handoff)
 
 Branch `main`, in sync with `origin/main` at commit `e4603bd` (last pushed:
