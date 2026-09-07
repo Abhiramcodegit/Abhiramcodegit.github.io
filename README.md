@@ -23,31 +23,21 @@ Live at **[abhiramcodegit.github.io](https://abhiramcodegit.github.io)**.
 
 **Setup**
 
-```bash
-yarn install   # first run pulls the full dependency tree and is slow (~6 min)
-yarn dev       # start the dev server at http://localhost:3000
-```
+1. Fork this repo to your own GitHub account.
+2. Clone your fork and open it in your IDE:
+
+   ```bash
+   git clone https://github.com/<your-username>/<your-repo>.git
+   ```
+
+3. Install dependencies and start the dev server:
+
+   ```bash
+   yarn install   # first run pulls the full dependency tree and is slow (~6 min)
+   yarn dev       # start the dev server at http://localhost:3000
+   ```
 
 The dev server hot-reloads as you edit files in `app/`, `components/`, or `data/`.
-
-**Production build (optional)**
-
-To reproduce the static export that gets deployed:
-
-```bash
-EXPORT=1 UNOPTIMIZED=1 yarn build   # output lands in ./out
-```
-
-**Troubleshooting**
-
-If Contentlayer throws `Module not found: .contentlayer/package.json` or `No file content`
-(usually from editing content while the dev server is regenerating), stop the dev server and
-clean-rebuild:
-
-```bash
-rm -rf .contentlayer .next
-yarn dev
-```
 
 ## Content
 
