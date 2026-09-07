@@ -1,13 +1,13 @@
 {
   "ai": 3,
-  "business": 1,
-  "stocks": 1,
-  "software-engineering": 1,
+  "iot": 1,
+  "hardware": 1,
+  "engineering": 2,
+  "research": 1,
   "sre": 1,
   "mcp": 1,
   "observability": 1,
-  "engineering": 2,
-  "iot": 1,
-  "hardware": 1,
-  "research": 1
+  "business": 1,
+  "stocks": 1,
+  "software-engineering": 1
 }
