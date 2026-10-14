@@ -1,6 +1,5 @@
 import { Authors, allAuthors, allBlogs } from 'contentlayer/generated'
 import { MDXLayoutRenderer } from 'pliny/mdx-components'
-import AuthorLayout from '@/layouts/AuthorLayout'
 import Hero from '@/components/Hero'
 import HomeSections from '@/components/HomeSections'
 import { allCoreContent, coreContent, sortPosts } from 'pliny/utils/contentlayer'
@@ -12,10 +11,18 @@ export default function Page() {
 
   return (
     <>
-      <Hero />
-      <AuthorLayout content={mainContent} title="" avatarClass="h-64 w-64">
+      <Hero
+        name={mainContent.name}
+        avatar={mainContent.avatar}
+        tagline={mainContent.company}
+        email={mainContent.email}
+        github={mainContent.github}
+        linkedin={mainContent.linkedin}
+        resume={mainContent.resume}
+      />
+      <div className="prose dark:prose-invert max-w-none pb-8">
         <MDXLayoutRenderer code={author.body.code} />
-      </AuthorLayout>
+      </div>
       <HomeSections posts={posts} />
     </>
   )
