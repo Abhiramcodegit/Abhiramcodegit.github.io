@@ -4,8 +4,20 @@ import { useState } from 'react'
 import Image from './Image'
 
 const ANIMATIONS = [
-  'waddle', 'spin', 'hop', 'shake', 'flip', 'peek', 'tip',
-  'dance', 'bounce', 'grow', 'dizzy', 'backflip', 'nod', 'slide',
+  'waddle',
+  'spin',
+  'hop',
+  'shake',
+  'flip',
+  'peek',
+  'tip',
+  'dance',
+  'bounce',
+  'grow',
+  'dizzy',
+  'backflip',
+  'nod',
+  'slide',
 ] as const
 type Anim = (typeof ANIMATIONS)[number]
 
