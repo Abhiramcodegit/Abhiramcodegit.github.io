@@ -31,26 +31,26 @@ export default function DuckLogo({ alt }: { alt: string }) {
   }
 
   return (
-    <div className="relative h-10 w-10">
+    <div className="relative h-14 w-14">
       <style>{`
         .duck-roamer { --far: 40vw; }
-        @media (min-width: 640px) { .duck-roamer { --far: max(340px, min(40vw, 480px)); } }
+        @media (min-width: 640px) { .duck-roamer { --far: max(380px, min(40vw, 480px)); } }
         @keyframes duck-x {
           0% { transform: translateX(0) }
-          8% { transform: translateX(36px) }
-          24% { transform: translateX(300px) }
+          8% { transform: translateX(52px) }
+          24% { transform: translateX(330px) }
           45% { transform: translateX(var(--far)) }
           55% { transform: translateX(var(--far)) }
-          71% { transform: translateX(300px) }
-          87% { transform: translateX(36px) }
+          71% { transform: translateX(330px) }
+          87% { transform: translateX(52px) }
           92% { transform: translateX(0) }
           100% { transform: translateX(0) }
         }
         @keyframes duck-y {
           0%, 4% { transform: translateY(0) }
-          8%, 20% { transform: translateY(-34px) }
+          8%, 20% { transform: translateY(-44px) }
           24%, 66% { transform: translateY(0) }
-          70%, 90% { transform: translateY(-34px) }
+          70%, 90% { transform: translateY(-44px) }
           92%, 100% { transform: translateY(0) }
         }
         @keyframes duck-face {
@@ -88,14 +88,14 @@ export default function DuckLogo({ alt }: { alt: string }) {
               type="button"
               onClick={play}
               aria-label={`${alt}: click the rubber duck`}
-              className="block h-10 w-10 cursor-pointer"
+              className="block h-14 w-14 cursor-pointer"
             >
               <Image
                 src="/static/images/logo-header.png"
                 alt={alt}
-                width={40}
-                height={40}
-                className={`h-10 w-10 ${playing ? `duck-play-${playing}` : 'duck-idle'}`}
+                width={56}
+                height={56}
+                className={`h-14 w-14 ${playing ? `duck-play-${playing}` : 'duck-idle'}`}
               />
             </button>
           </div>
