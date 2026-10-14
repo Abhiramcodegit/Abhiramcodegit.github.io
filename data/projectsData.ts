@@ -11,9 +11,7 @@ export interface Project {
 }
 
 const RUNWAI_DEMO = 'https://drive.google.com/file/d/1rZbB3GiykhvrtltZC2azOvAHakQC5VMZ/view'
-
-// TODO: paste the LinkedIn post URL for the Gridlock demo to show the Demo button.
-const GRIDLOCK_DEMO = ''
+const GRIDLOCK_DEMO = 'https://lnkd.in/p/eYGAhjTw'
 
 const projectsData: Project[] = [
   {
