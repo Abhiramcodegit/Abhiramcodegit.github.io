@@ -24,15 +24,15 @@
   --color-primary-950: oklch(0.279 0.077 45.635);
 
   /*
-    Grays shifted one step for readability: text-gray-500 (light mode secondary text)
-    is now the old gray-600, text-gray-400 (dark mode secondary text) is now the old gray-300,
-    and text-gray-600 is now the old gray-700.
+    Grays: dark mode uses the original Tailwind values (gray-300/400 untouched).
+    Light mode secondary text is darker: text-gray-500 now uses the old gray-600,
+    and text-gray-600 uses the old gray-700.
   */
   --color-gray-50: oklch(0.985 0.002 247.839);
   --color-gray-100: oklch(0.967 0.003 264.542);
   --color-gray-200: oklch(0.928 0.006 264.531);
   --color-gray-300: oklch(0.872 0.01 258.338);
-  --color-gray-400: oklch(0.872 0.01 258.338);
+  --color-gray-400: oklch(0.707 0.022 261.325);
   --color-gray-500: oklch(0.446 0.03 256.802);
   --color-gray-600: oklch(0.373 0.034 259.733);
   --color-gray-700: oklch(0.373 0.034 259.733);
@@ -105,18 +105,11 @@
     }
   }
 
-  /* Stronger body text: near-black on light, near-white on dark */
-  .prose.prose {
+  /* Light mode only: near-black body text. Dark mode keeps the default prose-invert colors. */
+  html:not(.dark) .prose.prose {
     --tw-prose-body: var(--color-gray-900);
     --tw-prose-bullets: var(--color-gray-700);
     --tw-prose-counters: var(--color-gray-700);
-  }
-
-  .dark .prose.prose {
-    --tw-prose-body: var(--color-gray-50);
-    --tw-prose-invert-body: var(--color-gray-50);
-    --tw-prose-bullets: var(--color-gray-300);
-    --tw-prose-counters: var(--color-gray-300);
   }
 
   .prose-invert {
