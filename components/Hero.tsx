@@ -92,7 +92,8 @@ export default function Hero({
                 alt={`${name} portrait`}
                 width={480}
                 height={480}
-                className="h-full w-full object-cover object-top origin-top scale-150"
+                className="h-full w-full object-cover object-top"
+                style={{ transform: 'scale(1.5)', transformOrigin: 'top' }}
               />
             </div>
           )}
