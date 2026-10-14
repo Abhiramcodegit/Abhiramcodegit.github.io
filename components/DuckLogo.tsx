@@ -33,12 +33,30 @@ export default function DuckLogo({ alt }: { alt: string }) {
   return (
     <div className="relative h-10 w-10">
       <style>{`
-        @keyframes duck-roam {
-          0% { transform: translateX(0) scaleX(1) }
-          45% { transform: translateX(min(40vw, 480px)) scaleX(1) }
-          50% { transform: translateX(min(40vw, 480px)) scaleX(-1) }
-          95% { transform: translateX(0) scaleX(-1) }
-          100% { transform: translateX(0) scaleX(1) }
+        .duck-roamer { --far: 40vw; }
+        @media (min-width: 640px) { .duck-roamer { --far: max(340px, min(40vw, 480px)); } }
+        @keyframes duck-x {
+          0% { transform: translateX(0) }
+          8% { transform: translateX(36px) }
+          24% { transform: translateX(300px) }
+          45% { transform: translateX(var(--far)) }
+          55% { transform: translateX(var(--far)) }
+          71% { transform: translateX(300px) }
+          87% { transform: translateX(36px) }
+          92% { transform: translateX(0) }
+          100% { transform: translateX(0) }
+        }
+        @keyframes duck-y {
+          0%, 4% { transform: translateY(0) }
+          8%, 20% { transform: translateY(-34px) }
+          24%, 66% { transform: translateY(0) }
+          70%, 90% { transform: translateY(-34px) }
+          92%, 100% { transform: translateY(0) }
+        }
+        @keyframes duck-face {
+          0%, 49.9% { transform: scaleX(1) }
+          50%, 94.9% { transform: scaleX(-1) }
+          95%, 100% { transform: scaleX(1) }
         }
         @keyframes duck-wobble { 0%,100% { transform: rotate(-7deg) translateY(0) } 25% { transform: rotate(7deg) translateY(-2px) } 50% { transform: rotate(-7deg) translateY(0) } 75% { transform: rotate(7deg) translateY(-2px) } }
         @keyframes duck-waddle { 0%,100% { transform: rotate(0) } 20% { transform: rotate(14deg) translateX(6px) } 40% { transform: rotate(-14deg) translateX(12px) } 60% { transform: rotate(14deg) translateX(6px) } 80% { transform: rotate(-14deg) } }
@@ -48,8 +66,11 @@ export default function DuckLogo({ alt }: { alt: string }) {
         @keyframes duck-flip { to { transform: rotateY(720deg) } }
         @keyframes duck-peek { 0%,100% { transform: scale(1) } 40%,60% { transform: translateY(6px) scale(1.3) } }
         @keyframes duck-tip { 0%,100% { transform: rotate(0) } 30%,70% { transform: rotate(75deg) translateY(4px) } }
-        .duck-roamer { animation: duck-roam 22s ease-in-out infinite; }
-        .duck-roamer[data-paused='true'], .duck-roamer:hover { animation-play-state: paused; }
+        .duck-roamer { animation: duck-x 22s linear infinite; }
+        .duck-hopper { animation: duck-y 22s linear infinite; }
+        .duck-facer { animation: duck-face 22s linear infinite; }
+        .duck-roamer[data-paused='true'], .duck-roamer[data-paused='true'] .duck-hopper, .duck-roamer[data-paused='true'] .duck-facer,
+        .duck-roamer:hover, .duck-roamer:hover .duck-hopper, .duck-roamer:hover .duck-facer { animation-play-state: paused; }
         .duck-idle { animation: duck-wobble 1.1s ease-in-out infinite; transform-origin: 50% 90%; }
         .duck-play-waddle { animation: duck-waddle 2.4s ease-in-out; }
         .duck-play-spin { animation: duck-spin 1.6s cubic-bezier(.16,1,.3,1); }
@@ -58,32 +79,36 @@ export default function DuckLogo({ alt }: { alt: string }) {
         .duck-play-flip { animation: duck-flip 1.6s cubic-bezier(.16,1,.3,1); }
         .duck-play-peek { animation: duck-peek 2s ease-in-out; }
         .duck-play-tip { animation: duck-tip 2.4s ease-in-out; transform-origin: 50% 100%; }
-        @media (prefers-reduced-motion: reduce) { .duck-roamer, .duck-idle, [class*='duck-play-'] { animation: none !important; } }
+        @media (prefers-reduced-motion: reduce) { .duck-roamer, .duck-hopper, .duck-facer, .duck-idle, [class*='duck-play-'] { animation: none !important; } }
       `}</style>
       <div className="duck-roamer absolute top-0 left-0" data-paused={playing ? 'true' : 'false'}>
-        <button
-          type="button"
-          onClick={play}
-          aria-label={`${alt}: click the rubber duck`}
-          className="block h-10 w-10 cursor-pointer"
-        >
-          <Image
-            src="/static/images/logo-header.png"
-            alt={alt}
-            width={40}
-            height={40}
-            className={`h-10 w-10 ${playing ? `duck-play-${playing}` : 'duck-idle'}`}
-          />
-        </button>
-        {playing && (
-          <span
-            role="status"
-            className="absolute top-full left-0 z-50 mt-2 w-max max-w-56 rounded-md bg-gray-900 px-3 py-2 text-sm text-white shadow-lg dark:bg-gray-100 dark:text-gray-900"
-          >
-            {CAPTIONS[playing]}
-            <span className="block text-xs opacity-70">New animation tomorrow.</span>
-          </span>
-        )}
+        <div className="duck-hopper relative">
+          <div className="duck-facer">
+            <button
+              type="button"
+              onClick={play}
+              aria-label={`${alt}: click the rubber duck`}
+              className="block h-10 w-10 cursor-pointer"
+            >
+              <Image
+                src="/static/images/logo-header.png"
+                alt={alt}
+                width={40}
+                height={40}
+                className={`h-10 w-10 ${playing ? `duck-play-${playing}` : 'duck-idle'}`}
+              />
+            </button>
+          </div>
+          {playing && (
+            <span
+              role="status"
+              className="absolute top-full left-0 z-50 mt-2 w-max max-w-56 rounded-md bg-gray-900 px-3 py-2 text-sm text-white shadow-lg dark:bg-gray-100 dark:text-gray-900"
+            >
+              {CAPTIONS[playing]}
+              <span className="block text-xs opacity-70">New animation tomorrow.</span>
+            </span>
+          )}
+        </div>
       </div>
     </div>
   )
