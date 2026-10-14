@@ -4,6 +4,23 @@
 @source '../node_modules/pliny';
 @custom-variant dark (&:where(.dark, .dark *));
 
+/*
+  Mode-aware text grays.
+  Light mode: gray 500/600/700 all render as the same near-black used for the bio paragraph.
+  Dark mode: the original Tailwind grays, untouched.
+*/
+:root {
+  --gx-500: oklch(0.21 0.034 264.665);
+  --gx-600: oklch(0.21 0.034 264.665);
+  --gx-700: oklch(0.21 0.034 264.665);
+}
+
+html.dark {
+  --gx-500: oklch(0.551 0.027 264.364);
+  --gx-600: oklch(0.446 0.03 256.802);
+  --gx-700: oklch(0.373 0.034 259.733);
+}
+
 /* Core theme configuration */
 @theme {
   /* Font families */
@@ -23,15 +40,14 @@
   --color-primary-900: oklch(0.414 0.112 45.904);
   --color-primary-950: oklch(0.279 0.077 45.635);
 
-  /* Grays: original Tailwind values for dark mode; light mode text is handled in the utilities layer below */
   --color-gray-50: oklch(0.985 0.002 247.839);
   --color-gray-100: oklch(0.967 0.003 264.542);
   --color-gray-200: oklch(0.928 0.006 264.531);
   --color-gray-300: oklch(0.872 0.01 258.338);
   --color-gray-400: oklch(0.707 0.022 261.325);
-  --color-gray-500: oklch(0.446 0.03 256.802);
-  --color-gray-600: oklch(0.373 0.034 259.733);
-  --color-gray-700: oklch(0.373 0.034 259.733);
+  --color-gray-500: var(--gx-500);
+  --color-gray-600: var(--gx-600);
+  --color-gray-700: var(--gx-700);
   --color-gray-800: oklch(0.278 0.033 256.848);
   --color-gray-900: oklch(0.21 0.034 264.665);
   --color-gray-950: oklch(0.13 0.028 261.692);
@@ -99,11 +115,6 @@
     & :where(code):not(pre code) {
       color: var(--color-indigo-500);
     }
-  }
-
-  /* LIGHT MODE ONLY: every gray text shade becomes the same near-black as the bio paragraph. */
-  html:not(.dark) :is(.text-gray-400, .text-gray-500, .text-gray-600, .text-gray-700) {
-    color: var(--color-gray-900);
   }
 
   /* LIGHT MODE ONLY: blog/about/markdown body text and secondary prose elements */
