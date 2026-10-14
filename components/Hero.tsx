@@ -84,17 +84,21 @@ export default function Hero({
           <span className="motion-safe:animate-pulse">_</span>
         </p>
         <p className="sr-only">Software Engineer, AI Systems Builder, Full-Stack Developer</p>
-        {avatar && (
-          <Image
-            src={avatar}
-            alt={`${name} portrait`}
-            width={192}
-            height={192}
-            className="mt-6 h-40 w-40 rounded-full object-cover md:h-48 md:w-48"
-          />
-        )}
-        {tagline && <p className="text-primary-500 mt-4 text-sm italic md:text-base">{tagline}</p>}
-        <div className="mt-5 flex space-x-3">
+        <div className="mt-6 flex flex-col gap-6 md:flex-row md:items-center md:gap-10">
+          {avatar && (
+            <Image
+              src={avatar}
+              alt={`${name} portrait`}
+              width={240}
+              height={240}
+              className="h-44 w-44 shrink-0 rounded-full object-cover md:h-60 md:w-60"
+            />
+          )}
+          {tagline && (
+            <p className="text-primary-500 text-xl leading-snug italic md:text-3xl">{tagline}</p>
+          )}
+        </div>
+        <div className="mt-6 flex space-x-3">
           {email && <SocialIcon kind="mail" href={`mailto:${email}`} />}
           <SocialIcon kind="github" href={github} />
           <SocialIcon kind="linkedin" href={linkedin} />
