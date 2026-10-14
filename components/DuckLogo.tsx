@@ -74,11 +74,11 @@ export default function DuckLogo({ alt }: { alt: string }) {
           92%, 100% { transform: translateX(0) }
         }
         @keyframes duck-y {
-          0%, 4% { transform: translateY(0) }
-          8%, 20% { transform: translateY(-44px) }
-          24%, 66% { transform: translateY(0) }
-          70%, 90% { transform: translateY(-44px) }
-          92%, 100% { transform: translateY(0) }
+          0%, 2.5% { transform: translateY(0) }
+          6%, 20% { transform: translateY(-30px) }
+          24%, 71% { transform: translateY(0) }
+          75%, 86% { transform: translateY(-30px) }
+          90%, 100% { transform: translateY(0) }
         }
         @keyframes duck-face {
           0%, 49.9% { transform: scaleX(1) }
