@@ -15,6 +15,12 @@ const postDateTemplate: Intl.DateTimeFormatOptions = {
   day: 'numeric',
 }
 
+interface TocItem {
+  value: string
+  url: string
+  depth: number
+}
+
 interface LayoutProps {
   content: CoreContent<Blog>
   authorDetails: CoreContent<Authors>[]
@@ -26,6 +32,7 @@ interface LayoutProps {
 export default function PostLayout({ content, authorDetails, next, prev, children }: LayoutProps) {
   const { path, date, title, tags } = content
   const basePath = path.split('/')[0]
+  const toc = ((content as { toc?: TocItem[] }).toc || []).filter((item) => item.depth <= 3)
 
   return (
     <SectionContainer>
@@ -92,6 +99,27 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
               </dd>
             </dl>
             <div className="divide-y divide-gray-200 xl:col-span-3 xl:row-span-2 xl:pb-0 dark:divide-gray-700">
+              {toc.length >= 3 && (
+                <nav aria-label="Table of contents" className="pt-6">
+                  <details className="rounded-md border border-gray-200 px-4 py-3 dark:border-gray-700">
+                    <summary className="cursor-pointer text-sm font-semibold text-gray-900 dark:text-gray-100">
+                      On this page
+                    </summary>
+                    <ul className="mt-3 space-y-2 text-sm">
+                      {toc.map((item) => (
+                        <li key={item.url} style={{ paddingLeft: `${(item.depth - 1) * 0.75}rem` }}>
+                          <a
+                            href={item.url}
+                            className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                          >
+                            {item.value}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </details>
+                </nav>
+              )}
               <div className="prose dark:prose-invert max-w-none pt-10 pb-8">{children}</div>
             </div>
             <footer>
