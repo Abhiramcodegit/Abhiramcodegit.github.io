@@ -84,7 +84,7 @@ export default function Hero({
           <span className="motion-safe:animate-pulse">_</span>
         </p>
         <p className="sr-only">Software Engineer, AI Systems Builder, Full-Stack Developer</p>
-        <div className="mt-6 flex flex-col gap-6 md:flex-row md:items-center md:gap-10">
+        <div className="mt-6 flex flex-col gap-6 md:flex-row md:items-start md:gap-10">
           <div className="flex shrink-0 flex-col items-center gap-5">
             {avatar && (
               <div className="h-44 w-44 overflow-hidden rounded-full md:h-60 md:w-60">
@@ -106,7 +106,9 @@ export default function Hero({
             </div>
           </div>
           {tagline && (
-            <p className="text-primary-500 text-xl leading-snug italic md:text-3xl">{tagline}</p>
+            <div className="flex md:h-60 md:items-center">
+              <p className="text-primary-500 text-xl leading-snug italic md:text-3xl">{tagline}</p>
+            </div>
           )}
         </div>
       </div>
