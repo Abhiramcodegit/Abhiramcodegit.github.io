@@ -1,0 +1,78 @@
+---
+title: 'Making Virtual Agents Feel Attentive'
+date: '2026-09-03'
+tags: ['ai', 'research', 'virtual-agents', 'hci', 'javascript']
+draft: false
+summary: 'What I learned about rapport, nonverbal cues, and animation timing as a Research Assistant at the VISAGE Lab at FIU, from modular Action Unit functions to evaluating facial analysis tools.'
+authors: ['default']
+---
+
+When someone is talking to you, your response starts before you say anything.
+
+You might nod, lean a little closer, or shift your gaze. I sometimes look upward when I’m figuring out what to say. During my time as a Research Assistant at the VISAGE Lab at Florida International University, those small behaviors became the focus of an interesting engineering problem.
+
+**How do we give a conversational agent more natural ways to participate, not just speak?**
+
+## More than a realistic face
+
+For the work I was involved in, the goal wasn’t simply to build the most visually realistic human possible. We were interested in rapport: making the interaction feel attentive, positive, and responsive.
+
+That changed the question I was thinking about. Instead of only asking, “How human does this agent look?” I started asking, “What does it do while the other person is speaking, and does that behavior fit the moment?”
+
+Visual realism and conversational behavior were different parts of the problem. My focus was on the behavior.
+
+## From reading to building
+
+Part of my introduction to research was learning how to read papers with a purpose. What did the researchers achieve? How did they test it? What did the results support, and what questions were still open?
+
+We explored ideas from psychology, healthcare communication, and conversational agents to help shape our approach. Through that reading, we identified an area we wanted to explore: translating speaker and listener behaviors into cues an agent could perform with more natural timing.
+
+Reading wasn’t separate from building. It helped us decide what was worth trying.
+
+## Building speaker and listener cues
+
+My work focused on developing cues for the agent’s speaking and listening behaviors. The examples we considered included nodding, gaze shifts, and leaning, alongside combinations such as a head movement paired with a hand near the chin.
+
+I wasn’t treating every gesture as a universal signal with one fixed meaning. The aim was to explore behaviors that could fit different conversational moments, rather than make the agent repeat the same “I’m listening” animation.
+
+The challenge was turning an observed behavior into something the model could actually perform.
+
+## Modular action unit functions
+
+One of my main contributions was developing **modular JavaScript functions that triggered specific combinations of facial Action Units**, informed by the psychological research we were reviewing. Rather than treating an expression as a purely visual animation, I worked on connecting the implementation to the behaviors described in that research.
+
+For readers who want background on the terminology, this [introduction to the Facial Action Coding System from iMotions](https://imotions.com/blog/learning/research-fundamentals/facial-action-coding-system/) provides a useful companion to this section.
+
+The facial expressions were one part of the work. Head movements, gaze shifts, and posture also needed their own controls and coordination. I worked on combining the available controls into larger behaviors, adjusting their speed, sequence, and timing.
+
+## The engineering behind a nod
+
+A cue that sounds simple in a description becomes a collection of smaller decisions in code. For a nod, that means thinking about how the movement begins, how quickly it unfolds, and how it returns to the resting pose.
+
+Then there’s the transition into the next behavior. I was working on that fluidity, making individual movements fit together instead of looking like disconnected animation commands.
+
+The research helped inform what to build. Testing helped me examine how the implementation actually looked.
+
+## Timing was part of the behavior
+
+In everyday conversation, we don’t usually calculate when to nod or how long to hold a listening posture. For an agent, those choices need an implementation.
+
+That meant working on both **what the cue looked like** and **when it happened**, then testing the behavior and revisiting the combinations. The goal was to support an attentive interaction, not to add movement just so the character wasn’t standing still.
+
+You can [watch my LinkedIn demo of the cues I worked on](https://lnkd.in/p/eF-y7xUb). It shows examples of the prototype behavior, rather than a formal evaluation of whether it improved rapport.
+
+## Evaluating tools beyond their claims
+
+Another part of my role involved exploring facial analysis tools and APIs, including open source options, to understand which might fit our project. I looked at the facial landmarks they exposed, their documented capabilities, and the research behind their claims.
+
+I also tested tools internally rather than relying only on their descriptions. That helped me learn to distinguish between an impressive feature list and something useful for the specific system we were building.
+
+The number of landmarks was one detail to understand, not the whole decision.
+
+## What stayed with me
+
+This experience made me think about conversational AI beyond generating a good answer. I became interested in everything around that answer: the listening behavior, the pauses, the transitions, and the cues intended to communicate attention.
+
+It also gave me practice moving between disciplines. I was reading research, translating ideas into programmable behavior, and testing what I had built. This post reflects that implementation and learning experience, not a published VISAGE study.
+
+The question I left with is one I still find interesting: **how can we make an agent feel more attentive without simply making it move more?**
