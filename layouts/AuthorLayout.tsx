@@ -31,13 +31,16 @@ export default function AuthorLayout({
         <div className="items-start space-y-2 xl:grid xl:grid-cols-3 xl:space-y-0 xl:gap-x-8">
           <div className="flex flex-col items-center space-x-2 pt-8">
             {avatar && (
-              <Image
-                src={avatar}
-                alt="avatar"
-                width={256}
-                height={256}
-                className={`${avatarClass} rounded-full object-cover object-top`}
-              />
+              <div className={`${avatarClass} overflow-hidden rounded-full`}>
+                <Image
+                  src={avatar}
+                  alt="avatar"
+                  width={256}
+                  height={256}
+                  className="h-full w-full object-cover object-top"
+                  style={{ transform: 'scale(1.6)', transformOrigin: 'top' }}
+                />
+              </div>
             )}
             <h3 className="pt-4 pb-2 text-2xl leading-8 font-bold tracking-tight">{name}</h3>
             <div className="text-center text-gray-500 dark:text-gray-400">{occupation}</div>

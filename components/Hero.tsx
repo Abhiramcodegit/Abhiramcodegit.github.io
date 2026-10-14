@@ -85,27 +85,29 @@ export default function Hero({
         </p>
         <p className="sr-only">Software Engineer, AI Systems Builder, Full-Stack Developer</p>
         <div className="mt-6 flex flex-col gap-6 md:flex-row md:items-center md:gap-10">
-          {avatar && (
-            <div className="h-44 w-44 shrink-0 overflow-hidden rounded-full md:h-60 md:w-60">
-              <Image
-                src={avatar}
-                alt={`${name} portrait`}
-                width={480}
-                height={480}
-                className="h-full w-full object-cover object-top"
-                style={{ transform: 'scale(1.5)', transformOrigin: 'top' }}
-              />
+          <div className="flex shrink-0 flex-col items-center gap-5">
+            {avatar && (
+              <div className="h-44 w-44 overflow-hidden rounded-full md:h-60 md:w-60">
+                <Image
+                  src={avatar}
+                  alt={`${name} portrait`}
+                  width={480}
+                  height={480}
+                  className="h-full w-full object-cover object-top"
+                  style={{ transform: 'scale(1.6)', transformOrigin: 'top' }}
+                />
+              </div>
+            )}
+            <div className="flex justify-center space-x-3">
+              {email && <SocialIcon kind="mail" href={`mailto:${email}`} />}
+              <SocialIcon kind="github" href={github} />
+              <SocialIcon kind="linkedin" href={linkedin} />
+              <SocialIcon kind="resume" href={resume} />
             </div>
-          )}
+          </div>
           {tagline && (
             <p className="text-primary-500 text-xl leading-snug italic md:text-3xl">{tagline}</p>
           )}
-        </div>
-        <div className="mt-6 flex space-x-3">
-          {email && <SocialIcon kind="mail" href={`mailto:${email}`} />}
-          <SocialIcon kind="github" href={github} />
-          <SocialIcon kind="linkedin" href={linkedin} />
-          <SocialIcon kind="resume" href={resume} />
         </div>
       </div>
     </section>
