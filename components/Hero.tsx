@@ -11,13 +11,18 @@ const ROLES = [
   'Infrastructure Tinkerer',
 ]
 
+interface QuickLink {
+  label: string
+  href: string
+}
+
 const LINKS = [
   { label: 'Projects', href: '/projects' },
   { label: 'Blog', href: '/blog' },
   { label: 'About', href: '/about' },
   { label: 'GitHub', href: siteMetadata.github },
   { label: 'LinkedIn', href: siteMetadata.linkedin },
-]
+].filter((item): item is QuickLink => Boolean(item.href))
 
 function useTypingRoles(words: string[]) {
   const [text, setText] = useState(words[0])
