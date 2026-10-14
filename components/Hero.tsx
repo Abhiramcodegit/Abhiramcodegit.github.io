@@ -8,7 +8,7 @@ const ROLES = [
   'Software Engineer',
   'AI Systems Builder',
   'Full-Stack Developer',
-  'Infrastructure Tinkerer',
+  'Cloud & DevOps Engineer',
 ]
 
 interface HeroProps {
@@ -56,7 +56,15 @@ function useTypingRoles(words: string[]) {
   return text
 }
 
-export default function Hero({ name, avatar, tagline, email, github, linkedin, resume }: HeroProps) {
+export default function Hero({
+  name,
+  avatar,
+  tagline,
+  email,
+  github,
+  linkedin,
+  resume,
+}: HeroProps) {
   const role = useTypingRoles(ROLES)
 
   return (
@@ -68,10 +76,7 @@ export default function Hero({ name, avatar, tagline, email, github, linkedin, r
         <h1 className="mt-3 text-4xl leading-tight font-extrabold tracking-tight text-gray-900 md:text-6xl dark:text-gray-100">
           {name}
         </h1>
-        <p
-          aria-hidden="true"
-          className="text-primary-500 mt-3 min-h-8 font-mono text-lg md:text-2xl"
-        >
+        <p aria-hidden="true" className="text-primary-500 mt-3 min-h-8 font-mono text-lg md:text-2xl">
           {role}
           <span className="motion-safe:animate-pulse">_</span>
         </p>
@@ -85,9 +90,7 @@ export default function Hero({ name, avatar, tagline, email, github, linkedin, r
             className="mt-6 h-40 w-40 rounded-full object-cover md:h-48 md:w-48"
           />
         )}
-        {tagline && (
-          <p className="text-primary-500 mt-4 text-sm italic md:text-base">{tagline}</p>
-        )}
+        {tagline && <p className="text-primary-500 mt-4 text-sm italic md:text-base">{tagline}</p>}
         <div className="mt-5 flex space-x-3">
           {email && <SocialIcon kind="mail" href={`mailto:${email}`} />}
           <SocialIcon kind="github" href={github} />
