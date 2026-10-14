@@ -46,6 +46,11 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
               <div>
                 <PageTitle>{title}</PageTitle>
               </div>
+              {content.readingTime?.text && (
+                <p className="text-sm text-gray-500 dark:text-gray-400">
+                  {content.readingTime.text}
+                </p>
+              )}
             </div>
           </header>
           <div className="grid-rows-[auto_1fr] divide-y divide-gray-200 pb-8 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0 dark:divide-gray-700">
