@@ -86,13 +86,15 @@ export default function Hero({
         <p className="sr-only">Software Engineer, AI Systems Builder, Full-Stack Developer</p>
         <div className="mt-6 flex flex-col gap-6 md:flex-row md:items-center md:gap-10">
           {avatar && (
-            <Image
-              src={avatar}
-              alt={`${name} portrait`}
-              width={240}
-              height={240}
-              className="h-44 w-44 shrink-0 rounded-full object-cover md:h-60 md:w-60"
-            />
+            <div className="h-44 w-44 shrink-0 overflow-hidden rounded-full md:h-60 md:w-60">
+              <Image
+                src={avatar}
+                alt={`${name} portrait`}
+                width={480}
+                height={480}
+                className="h-full w-full object-cover object-top origin-top scale-150"
+              />
+            </div>
           )}
           {tagline && (
             <p className="text-primary-500 text-xl leading-snug italic md:text-3xl">{tagline}</p>

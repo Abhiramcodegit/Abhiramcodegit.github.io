@@ -36,7 +36,7 @@ export default function AuthorLayout({
                 alt="avatar"
                 width={256}
                 height={256}
-                className={`${avatarClass} rounded-full`}
+                className={`${avatarClass} rounded-full object-cover object-top`}
               />
             )}
             <h3 className="pt-4 pb-2 text-2xl leading-8 font-bold tracking-tight">{name}</h3>
