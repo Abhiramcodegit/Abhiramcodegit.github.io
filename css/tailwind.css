@@ -4,34 +4,50 @@
 @source '../node_modules/pliny';
 @custom-variant dark (&:where(.dark, .dark *));
 
+/*
+  Mode-aware text grays.
+  Light mode: gray 500/600/700 all render as the same near-black used for the bio paragraph.
+  Dark mode: the original Tailwind grays, untouched.
+*/
+:root {
+  --gx-500: oklch(0.21 0.034 264.665);
+  --gx-600: oklch(0.21 0.034 264.665);
+  --gx-700: oklch(0.21 0.034 264.665);
+}
+
+html.dark {
+  --gx-500: oklch(0.551 0.027 264.364);
+  --gx-600: oklch(0.446 0.03 256.802);
+  --gx-700: oklch(0.373 0.034 259.733);
+}
+
 /* Core theme configuration */
 @theme {
   /* Font families */
   --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
-  /* Colors */
-  /* Copied from https://tailwindcss.com/docs/theme#default-theme-variable-reference */
-  --color-primary-50: oklch(0.971 0.014 343.198);
-  --color-primary-100: oklch(0.948 0.028 342.258);
-  --color-primary-200: oklch(0.899 0.061 343.231);
-  --color-primary-300: oklch(0.823 0.12 346.018);
-  --color-primary-400: oklch(0.718 0.202 349.761);
-  --color-primary-500: oklch(0.656 0.241 354.308);
-  --color-primary-600: oklch(0.592 0.249 0.584);
-  --color-primary-700: oklch(0.525 0.223 3.958);
-  --color-primary-800: oklch(0.459 0.187 3.815);
-  --color-primary-900: oklch(0.408 0.153 2.432);
-  --color-primary-950: oklch(0.284 0.109 3.907);
+  /* Colors: amber accent to match the duck mascot */
+  --color-primary-50: oklch(0.987 0.022 95.277);
+  --color-primary-100: oklch(0.962 0.059 95.617);
+  --color-primary-200: oklch(0.924 0.12 95.746);
+  --color-primary-300: oklch(0.879 0.169 91.605);
+  --color-primary-400: oklch(0.828 0.189 84.429);
+  --color-primary-500: oklch(0.769 0.188 70.08);
+  --color-primary-600: oklch(0.666 0.179 58.318);
+  --color-primary-700: oklch(0.555 0.163 48.998);
+  --color-primary-800: oklch(0.473 0.137 46.201);
+  --color-primary-900: oklch(0.414 0.112 45.904);
+  --color-primary-950: oklch(0.279 0.077 45.635);
 
   --color-gray-50: oklch(0.985 0.002 247.839);
   --color-gray-100: oklch(0.967 0.003 264.542);
   --color-gray-200: oklch(0.928 0.006 264.531);
   --color-gray-300: oklch(0.872 0.01 258.338);
   --color-gray-400: oklch(0.707 0.022 261.325);
-  --color-gray-500: oklch(0.551 0.027 264.364);
-  --color-gray-600: oklch(0.446 0.03 256.802);
-  --color-gray-700: oklch(0.373 0.034 259.733);
+  --color-gray-500: var(--gx-500);
+  --color-gray-600: var(--gx-600);
+  --color-gray-700: var(--gx-700);
   --color-gray-800: oklch(0.278 0.033 256.848);
   --color-gray-900: oklch(0.21 0.034 264.665);
   --color-gray-950: oklch(0.13 0.028 261.692);
@@ -81,9 +97,9 @@
 @layer utilities {
   .prose {
     & a {
-      color: var(--color-primary-500);
+      color: var(--color-primary-600);
       &:hover {
-        color: var(--color-primary-600);
+        color: var(--color-primary-700);
       }
       & code {
         color: var(--color-primary-400);
@@ -101,11 +117,24 @@
     }
   }
 
+  /* LIGHT MODE ONLY: blog/about/markdown body text and secondary prose elements */
+  html:not(.dark) .prose.prose {
+    --tw-prose-body: var(--color-gray-900);
+    --tw-prose-lead: var(--color-gray-900);
+    --tw-prose-bullets: var(--color-gray-900);
+    --tw-prose-counters: var(--color-gray-900);
+    --tw-prose-quotes: var(--color-gray-900);
+    --tw-prose-quote-borders: var(--color-gray-300);
+    --tw-prose-captions: var(--color-gray-900);
+    --tw-prose-th-borders: var(--color-gray-300);
+    --tw-prose-td-borders: var(--color-gray-200);
+  }
+
   .prose-invert {
     & a {
-      color: var(--color-primary-500);
+      color: var(--color-primary-400);
       &:hover {
-        color: var(--color-primary-400);
+        color: var(--color-primary-300);
       }
       & code {
         color: var(--color-primary-400);
