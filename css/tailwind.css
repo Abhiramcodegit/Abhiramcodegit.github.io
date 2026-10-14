@@ -20,16 +20,21 @@
   --color-primary-600: oklch(0.666 0.179 58.318);
   --color-primary-700: oklch(0.555 0.163 48.998);
   --color-primary-800: oklch(0.473 0.137 46.201);
-  --color-primary-900: oklch(0.414 0.112 45.904);
+  --color-primary-900: oklch(0.408 0.153 2.432);
   --color-primary-950: oklch(0.279 0.077 45.635);
 
+  /*
+    Grays shifted one step for readability: text-gray-500 (light mode secondary text)
+    is now the old gray-600, text-gray-400 (dark mode secondary text) is now the old gray-300,
+    and text-gray-600 is now the old gray-700.
+  */
   --color-gray-50: oklch(0.985 0.002 247.839);
   --color-gray-100: oklch(0.967 0.003 264.542);
   --color-gray-200: oklch(0.928 0.006 264.531);
   --color-gray-300: oklch(0.872 0.01 258.338);
-  --color-gray-400: oklch(0.707 0.022 261.325);
-  --color-gray-500: oklch(0.551 0.027 264.364);
-  --color-gray-600: oklch(0.446 0.03 256.802);
+  --color-gray-400: oklch(0.872 0.01 258.338);
+  --color-gray-500: oklch(0.446 0.03 256.802);
+  --color-gray-600: oklch(0.373 0.034 259.733);
   --color-gray-700: oklch(0.373 0.034 259.733);
   --color-gray-800: oklch(0.278 0.033 256.848);
   --color-gray-900: oklch(0.21 0.034 264.665);
@@ -98,6 +103,20 @@
     & :where(code):not(pre code) {
       color: var(--color-indigo-500);
     }
+  }
+
+  /* Stronger body text: near-black on light, near-white on dark */
+  .prose.prose {
+    --tw-prose-body: var(--color-gray-900);
+    --tw-prose-bullets: var(--color-gray-700);
+    --tw-prose-counters: var(--color-gray-700);
+  }
+
+  .dark .prose.prose {
+    --tw-prose-body: var(--color-gray-50);
+    --tw-prose-invert-body: var(--color-gray-50);
+    --tw-prose-bullets: var(--color-gray-300);
+    --tw-prose-counters: var(--color-gray-300);
   }
 
   .prose-invert {
