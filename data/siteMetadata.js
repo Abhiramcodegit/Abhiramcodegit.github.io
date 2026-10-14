@@ -9,7 +9,7 @@ const siteMetadata = {
   theme: 'system', // system, dark or light
   siteUrl: 'https://abhiramcodegit.github.io',
   siteRepo: 'https://github.com/Abhiramcodegit/Abhiramcodegit.github.io',
-  siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
+  siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo-header.png`,
   socialBanner: `${process.env.BASE_PATH || ''}/static/images/twitter-card.png`,
   email: 'abhiram.bhogi@gmail.com',
   github: 'https://github.com/Abhiramcodegit',
