@@ -23,11 +23,7 @@
   --color-primary-900: oklch(0.414 0.112 45.904);
   --color-primary-950: oklch(0.279 0.077 45.635);
 
-  /*
-    Grays: dark mode uses the original Tailwind values (gray-300/400 untouched).
-    Light mode secondary text is darker: text-gray-500 now uses the old gray-600,
-    and text-gray-600 uses the old gray-700.
-  */
+  /* Grays: original Tailwind values for dark mode; light mode text is handled in the utilities layer below */
   --color-gray-50: oklch(0.985 0.002 247.839);
   --color-gray-100: oklch(0.967 0.003 264.542);
   --color-gray-200: oklch(0.928 0.006 264.531);
@@ -105,11 +101,22 @@
     }
   }
 
-  /* Light mode only: near-black body text. Dark mode keeps the default prose-invert colors. */
+  /* LIGHT MODE ONLY: every gray text shade becomes the same near-black as the bio paragraph. */
+  html:not(.dark) :is(.text-gray-400, .text-gray-500, .text-gray-600, .text-gray-700) {
+    color: var(--color-gray-900);
+  }
+
+  /* LIGHT MODE ONLY: blog/about/markdown body text and secondary prose elements */
   html:not(.dark) .prose.prose {
     --tw-prose-body: var(--color-gray-900);
-    --tw-prose-bullets: var(--color-gray-700);
-    --tw-prose-counters: var(--color-gray-700);
+    --tw-prose-lead: var(--color-gray-900);
+    --tw-prose-bullets: var(--color-gray-900);
+    --tw-prose-counters: var(--color-gray-900);
+    --tw-prose-quotes: var(--color-gray-900);
+    --tw-prose-quote-borders: var(--color-gray-300);
+    --tw-prose-captions: var(--color-gray-900);
+    --tw-prose-th-borders: var(--color-gray-300);
+    --tw-prose-td-borders: var(--color-gray-200);
   }
 
   .prose-invert {
