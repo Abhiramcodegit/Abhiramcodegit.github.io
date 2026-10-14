@@ -46,12 +46,14 @@ export default function HomeSections({ posts }: { posts: PostPreview[] }) {
         <ul className="mt-8 divide-y divide-gray-200 dark:divide-gray-700">
           {investments.map((item) => (
             <li key={item.label} className="grid gap-2 py-5 md:grid-cols-[10rem_1fr_auto] md:gap-8">
-              <span className="font-semibold text-primary-600 dark:text-primary-400">{item.label}</span>
+              <span className="text-primary-600 dark:text-primary-400 font-semibold">
+                {item.label}
+              </span>
               <span className="text-gray-600 dark:text-gray-400">{item.text}</span>
               {item.href ? (
                 <Link
                   href={item.href}
-                  className="font-medium text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300"
+                  className="text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 font-medium"
                 >
                   {item.cta} &rarr;
                 </Link>
@@ -70,7 +72,7 @@ export default function HomeSections({ posts }: { posts: PostPreview[] }) {
           </h2>
           <Link
             href="/projects"
-            className="text-sm font-medium text-primary-600 hover:text-primary-700 dark:text-primary-400"
+            className="text-primary-600 hover:text-primary-700 dark:text-primary-400 text-sm font-medium"
           >
             All projects &rarr;
           </Link>
@@ -88,7 +90,7 @@ export default function HomeSections({ posts }: { posts: PostPreview[] }) {
                   <a
                     href={p.demoUrl}
                     {...ext}
-                    className="rounded-md bg-primary-500 px-4 py-2 text-sm font-semibold text-gray-900 hover:bg-primary-400"
+                    className="bg-primary-500 hover:bg-primary-400 rounded-md px-4 py-2 text-sm font-semibold text-gray-900"
                   >
                     {p.demoLabel ?? 'Watch demo'} &rarr;
                   </a>
@@ -97,7 +99,7 @@ export default function HomeSections({ posts }: { posts: PostPreview[] }) {
                   <a
                     href={p.href}
                     {...ext}
-                    className="rounded-md border border-gray-300 px-4 py-2 text-sm font-semibold hover:border-primary-500 dark:border-gray-700"
+                    className="hover:border-primary-500 rounded-md border border-gray-300 px-4 py-2 text-sm font-semibold dark:border-gray-700"
                   >
                     View code
                   </a>
@@ -116,7 +118,7 @@ export default function HomeSections({ posts }: { posts: PostPreview[] }) {
             </h2>
             <Link
               href="/blog"
-              className="text-sm font-medium text-primary-600 hover:text-primary-700 dark:text-primary-400"
+              className="text-primary-600 hover:text-primary-700 dark:text-primary-400 text-sm font-medium"
             >
               All posts &rarr;
             </Link>
@@ -132,12 +134,17 @@ export default function HomeSections({ posts }: { posts: PostPreview[] }) {
                   })}
                 </time>
                 <h3 className="mt-1 text-xl font-bold tracking-tight">
-                  <Link href={`/${post.path}`} className="hover:text-primary-600 dark:hover:text-primary-400">
+                  <Link
+                    href={`/${post.path}`}
+                    className="hover:text-primary-600 dark:hover:text-primary-400"
+                  >
                     {post.title}
                   </Link>
                 </h3>
                 {post.summary && (
-                  <p className="mt-2 line-clamp-2 text-gray-600 dark:text-gray-400">{post.summary}</p>
+                  <p className="mt-2 line-clamp-2 text-gray-600 dark:text-gray-400">
+                    {post.summary}
+                  </p>
                 )}
               </li>
             ))}
