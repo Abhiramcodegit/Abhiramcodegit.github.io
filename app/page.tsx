@@ -1,6 +1,7 @@
 import { Authors, allAuthors, allBlogs } from 'contentlayer/generated'
 import { MDXLayoutRenderer } from 'pliny/mdx-components'
 import AuthorLayout from '@/layouts/AuthorLayout'
+import Hero from '@/components/Hero'
 import HomeSections from '@/components/HomeSections'
 import { allCoreContent, coreContent, sortPosts } from 'pliny/utils/contentlayer'
 
@@ -11,6 +12,7 @@ export default function Page() {
 
   return (
     <>
+      <Hero />
       <AuthorLayout content={mainContent} title="" avatarClass="h-64 w-64">
         <MDXLayoutRenderer code={author.body.code} />
       </AuthorLayout>
