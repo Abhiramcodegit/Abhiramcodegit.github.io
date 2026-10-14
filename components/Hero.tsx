@@ -76,7 +76,10 @@ export default function Hero({
         <h1 className="mt-3 text-4xl leading-tight font-extrabold tracking-tight text-gray-900 md:text-6xl dark:text-gray-100">
           {name}
         </h1>
-        <p aria-hidden="true" className="text-primary-500 mt-3 min-h-8 font-mono text-lg md:text-2xl">
+        <p
+          aria-hidden="true"
+          className="text-primary-500 mt-3 min-h-8 font-mono text-lg md:text-2xl"
+        >
           {role}
           <span className="motion-safe:animate-pulse">_</span>
         </p>
